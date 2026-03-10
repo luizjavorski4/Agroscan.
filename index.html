@@ -6,30 +6,52 @@ HTML
 <title>AgroGlif</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f0f7f0; }
-header { background:#2e7d32; color:white; padding:60px 20px; text-align:center; }
+/* Global */
+body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f4f7f6; color:#333; }
+h2, h3, h4 { margin:10px 0; }
+.container { max-width:1100px; margin:auto; padding:20px; }
+
+/* Header */
+header { background:#2e7d32; color:white; padding:50px 20px; text-align:center; }
 .logo { font-size:50px; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:15px; }
 .logo span { font-size:60px; color:#a5d6a7; }
-header p { font-size:20px; margin-top:10px; }
-.container { max-width:1000px; margin:auto; padding:20px; }
-.card { background:white; padding:30px; margin:20px auto; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.15); width:400px; text-align:center; }
-input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea { padding:10px; width:90%; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
-button { background:#2e7d32; color:white; padding:12px 25px; border:none; cursor:pointer; font-size:16px; margin-top:10px; border-radius:5px; }
+header p { font-size:22px; margin-top:10px; font-weight:400; }
+
+/* Cards */
+.card { background:white; padding:25px; margin:20px auto; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); width:100%; max-width:500px; }
+.card h3 { color:#2e7d32; margin-bottom:15px; }
+
+/* Inputs e botões */
+input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea {
+    padding:12px; width:95%; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:15px;
+}
+button { background:#2e7d32; color:white; padding:12px 25px; border:none; cursor:pointer; font-size:16px; border-radius:8px; transition:0.3s; }
 button:hover { background:#1b4d1b; }
-ul { list-style:none; padding-left:0; text-align:left; }
-li { margin:10px 0; }
-footer { background:#2e7d32; color:white; padding:30px; text-align:center; margin-top:50px; }
+
+/* Cards internos */
+.card-section { margin-top:20px; }
+.card-section h4 { color:#2e7d32; margin-bottom:10px; }
+
+/* Lista de plantios em tabela */
+table { width:100%; border-collapse: collapse; margin-top:10px; }
+th, td { padding:10px; border-bottom:1px solid #ccc; text-align:left; }
+th { background:#a5d6a7; color:#fff; border-radius:8px; }
+td { background:#f9f9f9; }
+
+/* Painel do usuário e admin */
+.user-panel, .admin-section { display:none; padding:20px; border-radius:10px; margin-top:20px; background:#e8f5e9; }
+
+/* Footer */
+footer { background:#2e7d32; color:white; padding:30px; text-align:center; margin-top:50px; font-size:14px; }
 a { color:#a5d6a7; text-decoration:none; }
 a:hover { text-decoration:underline; }
-.admin-section, .user-panel { display:none; background:#e0ffe0; padding:20px; margin-top:20px; border:2px solid #2e7d32; border-radius:10px; }
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo"><span>🌱</span>AgroGlif</div>
-<h2>Bem-vindo ao AgroGlif</h2>
-<p>Sua fazenda na palma da mão com inteligência artificial</p>
+<h2>Agricultura inteligente, resultados reais</h2>
 </header>
 
 <section class="container">
@@ -67,11 +89,10 @@ a:hover { text-decoration:underline; }
 </div>
 
 <!-- PAINEL USUÁRIO -->
-<div class="card user-panel" id="userPanel">
-<h3>Meu Painel</h3>
+<div class="user-panel" id="userPanel">
 
-<!-- Meus Plantios -->
-<h4>Meus Plantios</h4>
+<div class="card card-section">
+<h3>Meus Plantios</h3>
 <form onsubmit="addPlantio(event)">
 <select id="tipoCultura">
 <option value="Milho">Milho</option>
@@ -82,28 +103,35 @@ a:hover { text-decoration:underline; }
 <input type="text" placeholder="Área plantada (ha)" id="areaPlantada">
 <button type="submit">Adicionar Plantio</button>
 </form>
-<ul id="listaPlantios"></ul>
+<table id="listaPlantios">
+<tr><th>Cultura</th><th>Área (ha)</th></tr>
+</table>
+</div>
 
-<!-- Diagnóstico IA -->
-<h4>Analisar Planta</h4>
+<div class="card card-section">
+<h3>Analisar Planta</h3>
 <input type="file" id="plantaFoto">
 <button onclick="analisar()">Analisar planta</button>
 <h4 id="resultado"></h4>
+</div>
 
-<!-- Banco de conhecimento -->
-<h4>Banco de Conhecimento</h4>
+<div class="card card-section">
+<h3>Banco de Conhecimento</h3>
 <ul>
 <li>Doenças e pragas comuns</li>
 <li>Fertilizantes e manejo</li>
 <li>Tutoriais em vídeo e fotos</li>
 <li>Dicas de cultivo sustentável</li>
 </ul>
+</div>
 
-<!-- Diário de campo -->
-<h4>Diário de Campo</h4>
+<div class="card card-section">
+<h3>Diário de Campo</h3>
 <textarea id="diarioCampo" rows="5" placeholder="Registre eventos importantes: irrigação, clima, pragas..."></textarea>
 <button onclick="salvarDiario()">Salvar Diário</button>
 <p id="msgDiario"></p>
+</div>
+
 </div>
 
 </section>
@@ -164,11 +192,11 @@ document.getElementById("areaPlantada").value = "";
 
 function renderPlantios(){
 const lista = document.getElementById("listaPlantios");
-lista.innerHTML = "";
+lista.innerHTML = "<tr><th>Cultura</th><th>Área (ha)</th></tr>";
 plantios.forEach((p,i)=>{
-const li = document.createElement("li");
-li.textContent = `${p.cultura} - ${p.area} ha`;
-lista.appendChild(li);
+const row = document.createElement("tr");
+row.innerHTML = `<td>${p.cultura}</td><td>${p.area}</td>`;
+lista.appendChild(row);
 });
 }
 
