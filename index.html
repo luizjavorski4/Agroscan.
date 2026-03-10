@@ -3,145 +3,181 @@ HTML
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>AgroScan AI</title>
+<title>AgroGlif</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f0f7f0; }
-header { background:#2e7d32; color:white; padding:20px 0; text-align:center; }
-.logo { font-size:32px; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:10px; }
-.logo span { font-size:40px; color:#a5d6a7; }
-nav { display:flex; justify-content:center; background:#4CAF50; }
-nav a { color:white; text-decoration:none; padding:15px 25px; display:block; }
-nav a:hover { background:#45a049; }
-section { padding:40px 20px; text-align:center; }
-h2 { color:#2e7d32; }
-button { background:#2e7d32; color:white; padding:12px 20px; border:none; cursor:pointer; font-size:16px; }
+header { background:#2e7d32; color:white; padding:60px 20px; text-align:center; }
+.logo { font-size:50px; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:15px; }
+.logo span { font-size:60px; color:#a5d6a7; }
+header p { font-size:20px; margin-top:10px; }
+.container { max-width:1000px; margin:auto; padding:20px; }
+.card { background:white; padding:30px; margin:20px auto; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.15); width:400px; text-align:center; }
+input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea { padding:10px; width:90%; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+button { background:#2e7d32; color:white; padding:12px 25px; border:none; cursor:pointer; font-size:16px; margin-top:10px; border-radius:5px; }
 button:hover { background:#1b4d1b; }
-input[type="text"], input[type="email"], input[type="password"], input[type="file"] { padding:10px; width:250px; margin:10px 0; }
-footer { background:#2e7d32; color:white; padding:20px; text-align:center; }
-.container { max-width:800px; margin:auto; }
-ul { list-style: none; padding-left:0; text-align:left; }
+ul { list-style:none; padding-left:0; text-align:left; }
 li { margin:10px 0; }
-.admin-section { display:none; background:#e0ffe0; padding:20px; margin-top:20px; border:2px solid #2e7d32; }
+footer { background:#2e7d32; color:white; padding:30px; text-align:center; margin-top:50px; }
+a { color:#a5d6a7; text-decoration:none; }
+a:hover { text-decoration:underline; }
+.admin-section, .user-panel { display:none; background:#e0ffe0; padding:20px; margin-top:20px; border:2px solid #2e7d32; border-radius:10px; }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo"><span>🌱</span>AgroScan AI</div>
-<p>Identifique problemas em suas plantas com inteligência artificial</p>
+<div class="logo"><span>🌱</span>AgroGlif</div>
+<h2>Bem-vindo ao AgroGlif</h2>
+<p>Sua fazenda na palma da mão com inteligência artificial</p>
 </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#sobre">Sobre</a>
-<a href="#funcoes">Funções</a>
-<a href="#cadastro">Cadastro</a>
-<a href="#admin">Admin</a>
-</nav>
+<section class="container">
 
-<section id="home">
-<div class="container">
-<h2>Bem-vindo ao AgroScan AI</h2>
-<p>Envie fotos das suas plantas e descubra doenças, pragas ou deficiências nutricionais.</p>
-<input type="file">
-<br>
-<button onclick="analisar()">Analisar planta</button>
-<h3 id="resultado"></h3>
-</div>
-</section>
-
-<section id="sobre">
-<div class="container">
-<h2>Sobre o AgroScan AI</h2>
-<p>AgroScan AI é uma plataforma de agricultura de precisão que ajuda agricultores a identificar doenças, pragas e deficiências nutricionais nas plantas usando inteligência artificial. Nosso objetivo é tornar a agricultura mais eficiente e sustentável.</p>
-</div>
-</section>
-
-<section id="funcoes">
-<div class="container">
-<h2>Funções</h2>
-<ul>
-<li>Identificação de doenças foliares e pragas</li>
-<li>Monitoramento e histórico das análises</li>
-<li>Dicas de cultivo e fertilização</li>
-<li>Relatórios personalizados para cada planta</li>
-</ul>
-</div>
-</section>
-
-<section id="cadastro">
-<div class="container">
-<h2>Crie sua conta</h2>
-<form id="cadastroForm" onsubmit="cadastrar(event)">
-<input type="email" placeholder="Email" required><br>
-<input type="password" placeholder="Senha" required><br>
-<button type="submit">Cadastrar</button>
-</form>
-<p id="msgCadastro"></p>
-</div>
-</section>
-
-<section id="admin">
-<div class="container">
-<h2>Área do Dono (Admin)</h2>
-<p>Faça login para acessar os comandos secretos</p>
-<form id="adminForm" onsubmit="loginAdmin(event)">
-<input type="email" placeholder="Email" required><br>
-<input type="password" placeholder="Senha" required><br>
+<!-- LOGIN USUÁRIO -->
+<div class="card">
+<h3>Login de Usuário</h3>
+<form id="userLoginForm" onsubmit="loginUser(event)">
+<input type="email" placeholder="Email" required>
+<input type="password" placeholder="Senha" required>
 <button type="submit">Login</button>
 </form>
-<div class="admin-section" id="adminSection">
-<h3>Comandos do Dono</h3>
-<p>Aqui você pode ver todos os usuários, mensagens e gerenciar funcionalidades.</p>
-<ul id="adminCommands">
-<li>Exemplo: Listar usuários cadastrados (simulação)</li>
-<li>Exemplo: Limpar histórico (simulação)</li>
-<li>Exemplo: Enviar alerta para todos os usuários (simulação)</li>
+<p>Não tem conta? <a href="#" onclick="alert('Simulação de criar conta');">Criar conta</a></p>
+<p id="userMsg"></p>
+</div>
+
+<!-- LOGIN ADMIN -->
+<div class="card">
+<h3>Login do Admin</h3>
+<form id="adminForm" onsubmit="loginAdmin(event)">
+<input type="email" placeholder="Email" required>
+<input type="password" placeholder="Senha" required>
+<button type="submit">Login</button>
+</form>
+<div id="adminSection" class="admin-section">
+<h3>Área do Dono/Admin</h3>
+<ul>
+<li>Listar usuários cadastrados (simulação)</li>
+<li>Gerenciar conteúdos e alertas</li>
+<li>Limpar histórico ou análises</li>
 </ul>
 <button onclick="logoutAdmin()">Sair</button>
 </div>
-<p id="msgAdmin"></p>
+<p id="adminMsg"></p>
 </div>
+
+<!-- PAINEL USUÁRIO -->
+<div class="card user-panel" id="userPanel">
+<h3>Meu Painel</h3>
+
+<!-- Meus Plantios -->
+<h4>Meus Plantios</h4>
+<form onsubmit="addPlantio(event)">
+<select id="tipoCultura">
+<option value="Milho">Milho</option>
+<option value="Soja">Soja</option>
+<option value="Trigo">Trigo</option>
+<option value="Tomate">Tomate</option>
+</select>
+<input type="text" placeholder="Área plantada (ha)" id="areaPlantada">
+<button type="submit">Adicionar Plantio</button>
+</form>
+<ul id="listaPlantios"></ul>
+
+<!-- Diagnóstico IA -->
+<h4>Analisar Planta</h4>
+<input type="file" id="plantaFoto">
+<button onclick="analisar()">Analisar planta</button>
+<h4 id="resultado"></h4>
+
+<!-- Banco de conhecimento -->
+<h4>Banco de Conhecimento</h4>
+<ul>
+<li>Doenças e pragas comuns</li>
+<li>Fertilizantes e manejo</li>
+<li>Tutoriais em vídeo e fotos</li>
+<li>Dicas de cultivo sustentável</li>
+</ul>
+
+<!-- Diário de campo -->
+<h4>Diário de Campo</h4>
+<textarea id="diarioCampo" rows="5" placeholder="Registre eventos importantes: irrigação, clima, pragas..."></textarea>
+<button onclick="salvarDiario()">Salvar Diário</button>
+<p id="msgDiario"></p>
+</div>
+
 </section>
 
 <footer>
-<p>Suporte: <a href="mailto:suporte.agroscan@gmail.com" style="color:white;">suporte.agroscan@gmail.com</a></p>
-<p>&copy; 2026 AgroScan AI</p>
+<p>Suporte: <a href="mailto:suporte.agroglif@gmail.com">suporte.agroglif@gmail.com</a></p>
+<p>&copy; 2026 AgroGlif</p>
 </footer>
 
 <script>
+// Simulação análise IA
 function analisar(){
-document.getElementById("resultado").innerHTML = "🔍 Possível problema detectado: Mancha foliar.";
+document.getElementById("resultado").innerHTML = "🔍 Possível problema detectado: Mancha foliar. (Simulação)";
 }
 
-function cadastrar(e){
+// LOGIN USUÁRIO
+function loginUser(e){
 e.preventDefault();
-document.getElementById("msgCadastro").innerText = "✅ Cadastro realizado com sucesso! (Simulação)";
+document.getElementById("userMsg").innerText = "✅ Login de usuário bem-sucedido! (Simulação)";
+document.getElementById("userPanel").style.display = "block";
+e.target.style.display = "none";
 }
 
 // LOGIN ADMIN
-const adminEmail = "suporte.agroscan@gmail.com";
+const adminEmail = "suporte.agroglif@gmail.com";
 const adminSenha = "Dudu1010";
 
 function loginAdmin(e){
 e.preventDefault();
 const email = e.target[0].value;
 const senha = e.target[1].value;
-
 if(email === adminEmail && senha === adminSenha){
-document.getElementById("msgAdmin").innerText = "✅ Login bem-sucedido!";
+document.getElementById("adminMsg").innerText = "✅ Login bem-sucedido!";
 document.getElementById("adminSection").style.display = "block";
 e.target.style.display = "none";
 }else{
-document.getElementById("msgAdmin").innerText = "❌ Email ou senha incorretos!";
+document.getElementById("adminMsg").innerText = "❌ Email ou senha incorretos!";
 }
 }
 
 function logoutAdmin(){
 document.getElementById("adminSection").style.display = "none";
 document.getElementById("adminForm").style.display = "block";
-document.getElementById("msgAdmin").innerText = "";
+document.getElementById("adminMsg").innerText = "";
+}
+
+// Gestão de plantios
+const plantios = [];
+function addPlantio(e){
+e.preventDefault();
+const cultura = document.getElementById("tipoCultura").value;
+const area = document.getElementById("areaPlantada").value;
+if(!area) return alert("Informe a área plantada");
+plantios.push({cultura, area});
+renderPlantios();
+document.getElementById("areaPlantada").value = "";
+}
+
+function renderPlantios(){
+const lista = document.getElementById("listaPlantios");
+lista.innerHTML = "";
+plantios.forEach((p,i)=>{
+const li = document.createElement("li");
+li.textContent = `${p.cultura} - ${p.area} ha`;
+lista.appendChild(li);
+});
+}
+
+// Diário de campo
+function salvarDiario(){
+const texto = document.getElementById("diarioCampo").value;
+if(!texto) return alert("Digite algo no diário");
+document.getElementById("msgDiario").innerText = "✅ Diário salvo (simulação)";
+document.getElementById("diarioCampo").value = "";
 }
 </script>
 
