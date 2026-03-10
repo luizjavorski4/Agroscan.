@@ -1,0 +1,149 @@
+HTML
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>AgroScan AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f0f7f0; }
+header { background:#2e7d32; color:white; padding:20px 0; text-align:center; }
+.logo { font-size:32px; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:10px; }
+.logo span { font-size:40px; color:#a5d6a7; }
+nav { display:flex; justify-content:center; background:#4CAF50; }
+nav a { color:white; text-decoration:none; padding:15px 25px; display:block; }
+nav a:hover { background:#45a049; }
+section { padding:40px 20px; text-align:center; }
+h2 { color:#2e7d32; }
+button { background:#2e7d32; color:white; padding:12px 20px; border:none; cursor:pointer; font-size:16px; }
+button:hover { background:#1b4d1b; }
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] { padding:10px; width:250px; margin:10px 0; }
+footer { background:#2e7d32; color:white; padding:20px; text-align:center; }
+.container { max-width:800px; margin:auto; }
+ul { list-style: none; padding-left:0; text-align:left; }
+li { margin:10px 0; }
+.admin-section { display:none; background:#e0ffe0; padding:20px; margin-top:20px; border:2px solid #2e7d32; }
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><span>🌱</span>AgroScan AI</div>
+<p>Identifique problemas em suas plantas com inteligência artificial</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#sobre">Sobre</a>
+<a href="#funcoes">Funções</a>
+<a href="#cadastro">Cadastro</a>
+<a href="#admin">Admin</a>
+</nav>
+
+<section id="home">
+<div class="container">
+<h2>Bem-vindo ao AgroScan AI</h2>
+<p>Envie fotos das suas plantas e descubra doenças, pragas ou deficiências nutricionais.</p>
+<input type="file">
+<br>
+<button onclick="analisar()">Analisar planta</button>
+<h3 id="resultado"></h3>
+</div>
+</section>
+
+<section id="sobre">
+<div class="container">
+<h2>Sobre o AgroScan AI</h2>
+<p>AgroScan AI é uma plataforma de agricultura de precisão que ajuda agricultores a identificar doenças, pragas e deficiências nutricionais nas plantas usando inteligência artificial. Nosso objetivo é tornar a agricultura mais eficiente e sustentável.</p>
+</div>
+</section>
+
+<section id="funcoes">
+<div class="container">
+<h2>Funções</h2>
+<ul>
+<li>Identificação de doenças foliares e pragas</li>
+<li>Monitoramento e histórico das análises</li>
+<li>Dicas de cultivo e fertilização</li>
+<li>Relatórios personalizados para cada planta</li>
+</ul>
+</div>
+</section>
+
+<section id="cadastro">
+<div class="container">
+<h2>Crie sua conta</h2>
+<form id="cadastroForm" onsubmit="cadastrar(event)">
+<input type="email" placeholder="Email" required><br>
+<input type="password" placeholder="Senha" required><br>
+<button type="submit">Cadastrar</button>
+</form>
+<p id="msgCadastro"></p>
+</div>
+</section>
+
+<section id="admin">
+<div class="container">
+<h2>Área do Dono (Admin)</h2>
+<p>Faça login para acessar os comandos secretos</p>
+<form id="adminForm" onsubmit="loginAdmin(event)">
+<input type="email" placeholder="Email" required><br>
+<input type="password" placeholder="Senha" required><br>
+<button type="submit">Login</button>
+</form>
+<div class="admin-section" id="adminSection">
+<h3>Comandos do Dono</h3>
+<p>Aqui você pode ver todos os usuários, mensagens e gerenciar funcionalidades.</p>
+<ul id="adminCommands">
+<li>Exemplo: Listar usuários cadastrados (simulação)</li>
+<li>Exemplo: Limpar histórico (simulação)</li>
+<li>Exemplo: Enviar alerta para todos os usuários (simulação)</li>
+</ul>
+<button onclick="logoutAdmin()">Sair</button>
+</div>
+<p id="msgAdmin"></p>
+</div>
+</section>
+
+<footer>
+<p>Suporte: <a href="mailto:suporte.agroscan@gmail.com" style="color:white;">suporte.agroscan@gmail.com</a></p>
+<p>&copy; 2026 AgroScan AI</p>
+</footer>
+
+<script>
+function analisar(){
+document.getElementById("resultado").innerHTML = "🔍 Possível problema detectado: Mancha foliar.";
+}
+
+function cadastrar(e){
+e.preventDefault();
+document.getElementById("msgCadastro").innerText = "✅ Cadastro realizado com sucesso! (Simulação)";
+}
+
+// LOGIN ADMIN
+const adminEmail = "suporte.agroscan@gmail.com";
+const adminSenha = "Dudu1010";
+
+function loginAdmin(e){
+e.preventDefault();
+const email = e.target[0].value;
+const senha = e.target[1].value;
+
+if(email === adminEmail && senha === adminSenha){
+document.getElementById("msgAdmin").innerText = "✅ Login bem-sucedido!";
+document.getElementById("adminSection").style.display = "block";
+e.target.style.display = "none";
+}else{
+document.getElementById("msgAdmin").innerText = "❌ Email ou senha incorretos!";
+}
+}
+
+function logoutAdmin(){
+document.getElementById("adminSection").style.display = "none";
+document.getElementById("adminForm").style.display = "block";
+document.getElementById("msgAdmin").innerText = "";
+}
+</script>
+
+</body>
+</html>
