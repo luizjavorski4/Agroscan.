@@ -1,195 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>AgroGlif</title>
+<div id="ferramentas" style="display:none">
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<h2>Plataformas e Ferramentas Agrícolas</h2>
 
-<style>
+<h3>🛰 Monitoramento e Mapas</h3>
+<ul>
+<li>Climate FieldView – Monitoramento e mapas da lavoura</li>
+<li>EOS Data Analytics – Imagens de satélite e análise agrícola</li>
+<li>Taranis – Imagens de alta resolução com IA</li>
+<li>Agritempo – Monitoramento climático (Embrapa)</li>
+</ul>
 
-body{
-margin:0;
-font-family:Roboto;
-}
+<h3>📊 Gestão Agrícola</h3>
+<ul>
+<li>Aegro – Gestão agrícola completa</li>
+<li>Siagri / Totvs Agro – ERP agrícola</li>
+<li>MyFarm – Gestão para produtores</li>
+<li>Granular – Gestão financeira e operacional</li>
+<li>FarmLogics – Rastreabilidade e gestão da produção</li>
+</ul>
 
-/* FUNDO */
+<h3>📡 Dados e Integração</h3>
+<ul>
+<li>AgroTools – Análise de dados e território</li>
+<li>Leaf – Integração de dados agrícolas</li>
+</ul>
 
-.hero{
-height:100vh;
-background:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-position:relative;
-}
+<h3>🐛 Monitoramento de pragas</h3>
+<ul>
+<li>Strider (Syngenta Digital) – Monitoramento de pragas</li>
+</ul>
 
-.hero::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.45);
-}
+<h3>🚜 Logística e automação</h3>
+<ul>
+<li>CheckLog – Logística e gestão de frotas</li>
+<li>Solinftec – Automação e robótica no campo</li>
+</ul>
 
-/* CONTEÚDO */
-
-.content{
-position:relative;
-z-index:2;
-text-align:center;
-color:white;
-}
-
-/* LOGO */
-
-.logo{
-font-size:60px;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.logo span{
-color:#ffc107;
-}
-
-/* FRASE */
-
-.slogan{
-font-size:22px;
-margin-bottom:40px;
-}
-
-/* CARDS */
-
-.cards{
-display:flex;
-gap:40px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-/* CARD */
-
-.card{
-background:white;
-width:320px;
-padding:30px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-text-align:left;
-color:#333;
-}
-
-.card h3{
-margin-top:0;
-color:#2e7d32;
-}
-
-/* INPUT */
-
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #ccc;
-font-size:15px;
-}
-
-/* BOTÃO */
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-background:#2e7d32;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-button:hover{
-background:#1b5e20;
-}
-
-/* BOTÃO CRIAR */
-
-.btn-criar{
-background:#ffc107;
-color:black;
-}
-
-.btn-criar:hover{
-background:#e0a800;
-}
-
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-
-<div class="content">
-
-<div class="logo">
-🌱 Agro<span>Glif</span>
-</div>
-
-<div class="slogan">
-Gestão inteligente da sua lavoura com tecnologia
-</div>
-
-<div class="cards">
-
-<!-- LOGIN -->
-
-<div class="card">
-
-<h3>👤 Login de Usuário</h3>
-
-<input type="email" placeholder="Email">
-
-<input type="password" placeholder="Senha">
-
-<button onclick="login()">Entrar</button>
+<h3>🌱 Fertilidade do solo</h3>
+<ul>
+<li>Dose Certa – Cálculo de fertilizantes</li>
+</ul>
 
 </div>
-
-<!-- CRIAR CONTA -->
-
-<div class="card">
-
-<h3>📝 Criar Conta</h3>
-
-<p>Ainda não possui conta no AgroGlif?</p>
-
-<button class="btn-criar" onclick="criarConta()">
-Criar Conta
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<script>
-
-function login(){
-alert("Login simulado");
-}
-
-function criarConta(){
-alert("Criar conta simulado");
-}
-
-</script>
-
-</body>
-</html>
