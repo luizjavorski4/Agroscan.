@@ -1,44 +1,342 @@
-<div id="ferramentas" style="display:none">
+``` html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>AgroGlif</title>
 
-<h2>Plataformas e Ferramentas Agrícolas</h2>
+<style>
 
-<h3>🛰 Monitoramento e Mapas</h3>
+body{
+font-family:Arial;
+margin:0;
+background:#f0f0f0;
+}
+
+/* TELA LOGIN */
+
+#loginScreen{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#2e7d32;
+}
+
+.panel{
+display:flex;
+gap:40px;
+background:white;
+padding:40px;
+border-radius:10px;
+}
+
+.card{
+width:300px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#2e7d32;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+/* SISTEMA */
+
+#sistema{
+display:none;
+padding:30px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.menu div{
+background:white;
+padding:20px;
+border-radius:10px;
+cursor:pointer;
+text-align:center;
+font-weight:bold;
+}
+
+/* ÁREAS */
+
+.area{
+display:none;
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+/* CHAT */
+
+#chatBox{
+height:200px;
+border:1px solid #ccc;
+overflow:auto;
+padding:10px;
+margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PROCESSO 1 LOGIN -->
+
+<div id="loginScreen">
+
+<div class="panel">
+
+<div class="card">
+
+<h3>Login Usuário</h3>
+
+<input placeholder="Email">
+
+<input placeholder="Senha">
+
+<button onclick="entrar()">Entrar</button>
+
+<h4>Criar Conta</h4>
+
+<input placeholder="Novo Email">
+<input placeholder="Nova Senha">
+
+<button onclick="alert('Conta criada (simulação)')">Criar Conta</button>
+
+</div>
+
+<div class="card">
+
+<h3>Login Admin</h3>
+
+<input id="adminEmail" placeholder="Email">
+<input id="adminSenha" placeholder="Senha">
+
+<button onclick="loginAdmin()">Entrar</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROCESSO 2 SISTEMA -->
+
+<div id="sistema">
+
+<h1>🌱 AgroGlif - Plataforma Agrícola</h1>
+
+<div class="menu">
+
+<div onclick="abrir('chat')">Chat IA Agrícola</div>
+<div onclick="abrir('foto')">Diagnóstico por Foto</div>
+<div onclick="abrir('solo')">Mapeamento de Solo</div>
+<div onclick="abrir('clima')">Clima Agrícola</div>
+<div onclick="abrir('passo')">Passo a Passo</div>
+<div onclick="abrir('ferramentas')">Ferramentas Agrícolas</div>
+
+</div>
+
+<!-- CHAT IA -->
+
+<div id="chat" class="area">
+
+<h2>Chat IA Agrícola</h2>
+
+<div id="chatBox"></div>
+
+<input id="msg">
+
+<button onclick="enviar()">Enviar</button>
+
+</div>
+
+<!-- FOTO -->
+
+<div id="foto" class="area">
+
+<h2>Diagnóstico por Foto</h2>
+
+<input type="file">
+
+<button onclick="alert('Imagem enviada para análise (simulação)')">
+Analisar Planta
+</button>
+
+</div>
+
+<!-- SOLO -->
+
+<div id="solo" class="area">
+
+<h2>Mapeamento de Solo</h2>
+
+<p>Integração futura com mapas e satélite agrícola.</p>
+
+</div>
+
+<!-- CLIMA -->
+
+<div id="clima" class="area">
+
+<h2>Monitoramento Climático</h2>
+
+<p>Dados climáticos agrícolas (integração com serviços meteorológicos).</p>
+
+</div>
+
+<!-- PASSO A PASSO -->
+
+<div id="passo" class="area">
+
+<h2>Processo de Manejo Agrícola</h2>
+
+<ol>
+
+<li>Análise de solo</li>
+<li>Escolha da cultura</li>
+<li>Preparo do solo</li>
+<li>Plantio</li>
+<li>Monitoramento de pragas</li>
+<li>Aplicação de fertilizantes</li>
+<li>Colheita</li>
+
+</ol>
+
+</div>
+
+<!-- FERRAMENTAS -->
+
+<div id="ferramentas" class="area">
+
+<h2>Ferramentas Agrícolas</h2>
+
+<h3>Monitoramento e Mapas</h3>
+
 <ul>
-<li>Climate FieldView – Monitoramento e mapas da lavoura</li>
-<li>EOS Data Analytics – Imagens de satélite e análise agrícola</li>
-<li>Taranis – Imagens de alta resolução com IA</li>
-<li>Agritempo – Monitoramento climático (Embrapa)</li>
+<li>Climate FieldView</li>
+<li>EOS Data Analytics</li>
+<li>Taranis</li>
+<li>Agritempo</li>
 </ul>
 
-<h3>📊 Gestão Agrícola</h3>
+<h3>Gestão Agrícola</h3>
+
 <ul>
-<li>Aegro – Gestão agrícola completa</li>
-<li>Siagri / Totvs Agro – ERP agrícola</li>
-<li>MyFarm – Gestão para produtores</li>
-<li>Granular – Gestão financeira e operacional</li>
-<li>FarmLogics – Rastreabilidade e gestão da produção</li>
+<li>Aegro</li>
+<li>Siagri / Totvs Agro</li>
+<li>MyFarm</li>
+<li>Granular</li>
+<li>FarmLogics</li>
 </ul>
 
-<h3>📡 Dados e Integração</h3>
+<h3>Dados e Integração</h3>
+
 <ul>
-<li>AgroTools – Análise de dados e território</li>
-<li>Leaf – Integração de dados agrícolas</li>
+<li>AgroTools</li>
+<li>Leaf</li>
 </ul>
 
-<h3>🐛 Monitoramento de pragas</h3>
+<h3>Monitoramento de Pragas</h3>
+
 <ul>
-<li>Strider (Syngenta Digital) – Monitoramento de pragas</li>
+<li>Strider (Syngenta Digital)</li>
 </ul>
 
-<h3>🚜 Logística e automação</h3>
+<h3>Logística e Automação</h3>
+
 <ul>
-<li>CheckLog – Logística e gestão de frotas</li>
-<li>Solinftec – Automação e robótica no campo</li>
+<li>CheckLog</li>
+<li>Solinftec</li>
 </ul>
 
-<h3>🌱 Fertilidade do solo</h3>
+<h3>Fertilidade do Solo</h3>
+
 <ul>
-<li>Dose Certa – Cálculo de fertilizantes</li>
+<li>Dose Certa</li>
 </ul>
 
 </div>
+
+</div>
+
+<script>
+
+/* LOGIN */
+
+function entrar(){
+
+document.getElementById("loginScreen").style.display="none";
+document.getElementById("sistema").style.display="block";
+
+}
+
+function loginAdmin(){
+
+let email=document.getElementById("adminEmail").value;
+let senha=document.getElementById("adminSenha").value;
+
+if(email==="suporte.agroglif@gmail.com" && senha==="Dudu1010"){
+
+document.getElementById("loginScreen").style.display="none";
+document.getElementById("sistema").style.display="block";
+
+}else{
+
+alert("Login admin incorreto");
+
+}
+
+}
+
+/* MENU */
+
+function abrir(id){
+
+document.querySelectorAll(".area").forEach(function(el){
+
+el.style.display="none";
+
+});
+
+document.getElementById(id).style.display="block";
+
+}
+
+/* CHAT */
+
+function enviar(){
+
+let msg=document.getElementById("msg").value;
+
+let box=document.getElementById("chatBox");
+
+box.innerHTML+="<p><b>Você:</b> "+msg+"</p>";
+
+box.innerHTML+="<p><b>IA:</b> Estou analisando sua pergunta agrícola...</p>";
+
+}
+
+</script>
+
+</body>
+</html>
+```
+
