@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 <meta charset="UTF-8">
 <title>AgroGlif IA</title>
@@ -12,7 +14,7 @@ font-family:Arial;
 background:#f4f4f4;
 }
 
-/* FUNDO */
+/* IMAGEM DE FUNDO */
 
 .hero{
 background:url("banner-agroglif.png") center/cover no-repeat;
@@ -144,7 +146,7 @@ width:100%;
 <input placeholder="Novo email">
 <input placeholder="Nova senha">
 
-<button onclick="alert('Conta criada (simulação)')">
+<button onclick="alert('Conta criada com sucesso (simulação)')">
 Registrar
 </button>
 
@@ -197,7 +199,7 @@ Registrar
 
 <div id="chatBox"></div>
 
-<input id="msg">
+<input id="msg" placeholder="Digite sua pergunta">
 
 <button onclick="enviar()">Enviar</button>
 
@@ -233,7 +235,7 @@ Registrar
 
 <h3>Clima Agrícola</h3>
 
-<p id="climaInfo">Carregando clima...</p>
+<p id="climaInfo"></p>
 
 </div>
 
@@ -241,7 +243,7 @@ Registrar
 
 <div id="fertilizante" class="area">
 
-<h3>Cálculo Fertilizante</h3>
+<h3>Cálculo de Fertilizante</h3>
 
 <input id="area" placeholder="Área em hectares">
 
@@ -255,12 +257,14 @@ Registrar
 
 <script>
 
-/* LOGIN */
+/* LOGIN USUARIO */
 
 function loginUsuario(){
 document.getElementById("loginPage").style.display="none";
 document.getElementById("dashboard").style.display="block";
 }
+
+/* LOGIN ADMIN */
 
 function loginAdmin(){
 
@@ -274,13 +278,13 @@ document.getElementById("dashboard").style.display="block";
 
 }else{
 
-alert("Login admin incorreto");
+alert("Login ADM incorreto");
 
 }
 
 }
 
-/* CADASTRO */
+/* CRIAR CONTA */
 
 function mostrarCadastro(){
 document.getElementById("register").style.display="block";
@@ -290,7 +294,9 @@ document.getElementById("register").style.display="block";
 
 function abrir(id){
 
-document.querySelectorAll(".area").forEach(a=>a.style.display="none");
+document.querySelectorAll(".area").forEach(area=>{
+area.style.display="none";
+});
 
 document.getElementById(id).style.display="block";
 
@@ -312,20 +318,25 @@ box.innerHTML+="<p><b>Você:</b> "+msg+"</p>";
 
 let resposta="";
 
-if(msg.includes("soja")) resposta="Pode ser ferrugem asiática. Verifique fungicida.";
-else if(msg.includes("milho")) resposta="Verifique lagarta do cartucho.";
-else resposta="Sugiro verificar clima, solo e nutrição da planta.";
+if(msg.toLowerCase().includes("soja"))
+resposta="Pode ser ferrugem asiática. Recomenda-se aplicação de fungicida."
+
+else if(msg.toLowerCase().includes("milho"))
+resposta="Pode ser ataque de lagarta do cartucho."
+
+else
+resposta="Analise clima, fertilidade do solo e presença de pragas.";
 
 box.innerHTML+="<p><b>IA:</b> "+resposta+"</p>";
 
 }
 
-/* FOTO */
+/* ANALISE FOTO */
 
 function analisarFoto(){
 
 document.getElementById("resultadoFoto").innerText =
-"Possível diagnóstico: Mancha foliar.";
+"Diagnóstico inicial: possível doença foliar. Recomenda-se avaliação agronômica.";
 
 }
 
@@ -342,7 +353,7 @@ zoom:12
 
 }
 
-/* CLIMA */
+/* CLIMA SIMULADO */
 
 document.getElementById("climaInfo").innerText =
 "Temperatura: 24°C | Umidade: 70% | Parcialmente nublado";
@@ -353,10 +364,10 @@ function calcular(){
 
 let area=document.getElementById("area").value;
 
-let calc=area*120;
+let dose=area*120;
 
 document.getElementById("resultado").innerText =
-"Recomendação: "+calc+" kg de fertilizante.";
+"Recomendação aproximada: "+dose+" kg de fertilizante.";
 
 }
 
@@ -368,3 +379,4 @@ src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 
 </body>
 </html>
+```
