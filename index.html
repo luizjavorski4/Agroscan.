@@ -3,163 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <title>AgroGlif</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
-body, html{
+body{
 margin:0;
-padding:0;
-font-family:'Roboto',sans-serif;
-height:100%;
-background:#f5f5f5;
+font-family:Roboto;
 }
 
-a{
-text-decoration:none;
-color:#2e7d32;
-}
-
-/* HERO */
+/* FUNDO */
 
 .hero{
-background:url("logo-agroglif.jpg") center/cover no-repeat;
 height:100vh;
+background:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-color:white;
-text-align:center;
 position:relative;
 }
 
 .hero::after{
 content:"";
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,0.45);
 }
 
-.hero-content{
+/* CONTEÚDO */
+
+.content{
 position:relative;
 z-index:2;
-}
-
-.hero h1{
-font-size:55px;
-margin:0;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.hero p{
-font-size:22px;
-margin:20px 0 30px 0;
-}
-
-.hero .btn-group{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-button{
-background:#2e7d32;
+text-align:center;
 color:white;
-padding:12px 25px;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
 }
 
-button:hover{
-background:#145214;
+/* LOGO */
+
+.logo{
+font-size:60px;
+font-weight:700;
+margin-bottom:10px;
 }
 
-/* CONTAINER */
+.logo span{
+color:#ffc107;
+}
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
+/* FRASE */
+
+.slogan{
+font-size:22px;
+margin-bottom:40px;
 }
 
 /* CARDS */
 
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:25px;
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+justify-content:center;
 }
+
+/* CARD */
 
 .card{
 background:white;
-border-radius:12px;
-padding:25px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-text-align:center;
-}
-
-.card img{
-width:55px;
-margin-bottom:15px;
+width:320px;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+text-align:left;
+color:#333;
 }
 
 .card h3{
+margin-top:0;
 color:#2e7d32;
 }
 
-/* LOGIN */
-
-.login-box{
-max-width:380px;
-margin:auto;
-}
-
-.user-panel,.admin-section{
-display:none;
-background:#e8f5e9;
-padding:20px;
-border-radius:10px;
-margin-top:20px;
-}
+/* INPUT */
 
 input{
-padding:10px;
-width:92%;
-margin:8px 0;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-table{
 width:100%;
-border-collapse:collapse;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:15px;
 }
 
-th,td{
-padding:10px;
-}
+/* BOTÃO */
 
-th{
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
 background:#2e7d32;
 color:white;
+font-size:16px;
+cursor:pointer;
 }
 
-footer{
-background:#2e7d32;
-color:white;
-padding:25px;
-text-align:center;
-margin-top:40px;
+button:hover{
+background:#1b5e20;
+}
+
+/* BOTÃO CRIAR */
+
+.btn-criar{
+background:#ffc107;
+color:black;
+}
+
+.btn-criar:hover{
+background:#e0a800;
 }
 
 </style>
@@ -167,174 +131,62 @@ margin-top:40px;
 
 <body>
 
-<!-- HERO -->
-
 <section class="hero">
 
-<div class="hero-content">
+<div class="content">
 
-<h1>🌱 AgroGlif</h1>
-
-<p>Gestão inteligente da sua lavoura com tecnologia</p>
-
-<div class="btn-group">
-<button onclick="scrollToUserLogin()">Login de Usuário</button>
-<button onclick="alert('Simulação de criar conta')">Criar Conta</button>
+<div class="logo">
+🌱 Agro<span>Glif</span>
 </div>
 
+<div class="slogan">
+Gestão inteligente da sua lavoura com tecnologia
 </div>
-
-</section>
-
-<!-- FUNCIONALIDADES -->
-
-<section class="container">
-
-<h2 style="text-align:center;margin-bottom:40px;">
-O que você pode fazer no AgroGlif
-</h2>
 
 <div class="cards">
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png">
-<h3>Diagnóstico Inteligente</h3>
-<p>Envie fotos da planta e identifique pragas e doenças.</p>
-</div>
+<!-- LOGIN -->
 
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png">
-<h3>Gestão de Plantios</h3>
-<p>Acompanhe culturas e crescimento das lavouras.</p>
+
+<h3>👤 Login de Usuário</h3>
+
+<input type="email" placeholder="Email">
+
+<input type="password" placeholder="Senha">
+
+<button onclick="login()">Entrar</button>
+
 </div>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/414/414974.png">
-<h3>Diário de Campo</h3>
-<p>Registre clima, irrigação e fertilização.</p>
-</div>
+<!-- CRIAR CONTA -->
 
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/414/414927.png">
-<h3>Banco de Conhecimento</h3>
-<p>Aprenda sobre pragas, doenças e manejo.</p>
+
+<h3>📝 Criar Conta</h3>
+
+<p>Ainda não possui conta no AgroGlif?</p>
+
+<button class="btn-criar" onclick="criarConta()">
+Criar Conta
+</button>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
-
-<!-- LOGIN USUARIO -->
-
-<section class="container" id="userLoginSection">
-
-<div class="login-box card">
-
-<h3>Login de Usuário</h3>
-
-<form id="userLoginForm" onsubmit="loginUser(event)">
-
-<input type="email" placeholder="Email" required>
-
-<input type="password" placeholder="Senha" required>
-
-<button type="submit">Entrar</button>
-
-</form>
-
-<p id="userMsg"></p>
-
-</div>
-
-</section>
-
-<!-- LOGIN ADMIN -->
-
-<section class="container">
-
-<div class="login-box card">
-
-<h3>Login Admin</h3>
-
-<form id="adminForm" onsubmit="loginAdmin(event)">
-
-<input type="email" placeholder="Email" required>
-
-<input type="password" placeholder="Senha" required>
-
-<button type="submit">Entrar</button>
-
-</form>
-
-<div id="adminSection" class="admin-section">
-
-<h3>Painel Admin</h3>
-
-<ul>
-<li>Gerenciar usuários</li>
-<li>Gerenciar conteúdo</li>
-<li>Alertas agrícolas</li>
-</ul>
-
-<button onclick="logoutAdmin()">Sair</button>
-
-</div>
-
-<p id="adminMsg"></p>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>Suporte: suporte.agroglif@gmail.com</p>
-
-<p>© 2026 AgroGlif</p>
-
-</footer>
 
 <script>
 
-function scrollToUserLogin(){
-document.getElementById("userLoginSection").scrollIntoView({behavior:"smooth"});
+function login(){
+alert("Login simulado");
 }
 
-function loginUser(e){
-e.preventDefault();
-document.getElementById("userMsg").innerText="Login realizado (simulação)";
-}
-
-const adminEmail="suporte.agroglif@gmail.com";
-const adminSenha="Dudu1010";
-
-function loginAdmin(e){
-
-e.preventDefault();
-
-const email=e.target[0].value;
-const senha=e.target[1].value;
-
-if(email===adminEmail && senha===adminSenha){
-
-document.getElementById("adminMsg").innerText="Login realizado";
-document.getElementById("adminSection").style.display="block";
-e.target.style.display="none";
-
-}else{
-
-document.getElementById("adminMsg").innerText="Email ou senha incorretos";
-
-}
-
-}
-
-function logoutAdmin(){
-
-document.getElementById("adminSection").style.display="none";
-document.getElementById("adminForm").style.display="block";
-document.getElementById("adminMsg").innerText="";
-
+function criarConta(){
+alert("Criar conta simulado");
 }
 
 </script>
