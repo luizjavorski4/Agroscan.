@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,57 +6,117 @@ HTML
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* Global */
-body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f4f7f6; color:#333; }
-h2, h3, h4 { margin:10px 0; }
-.container { max-width:1100px; margin:auto; padding:20px; }
+body, html { margin:0; padding:0; font-family: 'Roboto', sans-serif; height:100%; }
+a { text-decoration:none; color:#2e7d32; }
+a:hover { color:#145214; }
 
-/* Header */
-header { background:#2e7d32; color:white; padding:50px 20px; text-align:center; }
-.logo { font-size:50px; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:15px; }
-.logo span { font-size:60px; color:#a5d6a7; }
-header p { font-size:22px; margin-top:10px; font-weight:400; }
-
-/* Cards */
-.card { background:white; padding:25px; margin:20px auto; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); width:100%; max-width:500px; }
-.card h3 { color:#2e7d32; margin-bottom:15px; }
-
-/* Inputs e botões */
-input[type="text"], input[type="email"], input[type="password"], input[type="file"], select, textarea {
-    padding:12px; width:95%; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:15px;
+/* Hero Section */
+.hero {
+    background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+    position:relative;
 }
-button { background:#2e7d32; color:white; padding:12px 25px; border:none; cursor:pointer; font-size:16px; border-radius:8px; transition:0.3s; }
-button:hover { background:#1b4d1b; }
+.hero::after {
+    content:"";
+    position:absolute;
+    top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.45);
+}
+.hero-content {
+    position:relative;
+    z-index:2;
+}
+.hero h1 {
+    font-size:60px;
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.hero h1 span { font-size:70px; color:#a5d6a7; }
+.hero p {
+    font-size:24px;
+    margin:20px 0 40px 0;
+}
 
-/* Cards internos */
-.card-section { margin-top:20px; }
-.card-section h4 { color:#2e7d32; margin-bottom:10px; }
+/* Hero Buttons */
+.hero .btn-group { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+button { background:#2e7d32; color:white; padding:15px 30px; border:none; border-radius:10px; font-size:18px; cursor:pointer; transition:0.3s; }
+button:hover { background:#145214; }
 
-/* Lista de plantios em tabela */
-table { width:100%; border-collapse: collapse; margin-top:10px; }
-th, td { padding:10px; border-bottom:1px solid #ccc; text-align:left; }
-th { background:#a5d6a7; color:#fff; border-radius:8px; }
+/* Container Geral */
+.container { max-width:1200px; margin:auto; padding:40px 20px; }
+
+/* Cards Funcionalidades */
+.cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.card { background:white; border-radius:15px; padding:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:0.3s; text-align:center; }
+.card:hover { transform:translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
+.card img { width:60px; height:60px; margin-bottom:15px; }
+.card h3 { margin:15px 0; color:#2e7d32; }
+.card p { font-size:15px; line-height:1.5; color:#555; }
+
+/* Painel Usuário/Admin */
+.user-panel, .admin-section { display:none; background:#e8f5e9; padding:30px; margin-top:30px; border-radius:15px; }
+input, select, textarea { padding:12px; width:95%; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:15px; }
+table { width:100%; border-collapse: collapse; margin-top:10px; border-radius:10px; overflow:hidden; }
+th, td { padding:12px; text-align:left; }
+th { background:#2e7d32; color:white; }
 td { background:#f9f9f9; }
 
-/* Painel do usuário e admin */
-.user-panel, .admin-section { display:none; padding:20px; border-radius:10px; margin-top:20px; background:#e8f5e9; }
-
 /* Footer */
-footer { background:#2e7d32; color:white; padding:30px; text-align:center; margin-top:50px; font-size:14px; }
-a { color:#a5d6a7; text-decoration:none; }
-a:hover { text-decoration:underline; }
+footer { background:#2e7d32; color:white; padding:30px; text-align:center; font-size:14px; margin-top:50px; }
 </style>
 </head>
 <body>
 
-<header>
-<div class="logo"><span>🌱</span>AgroGlif</div>
-<h2>Agricultura inteligente, resultados reais</h2>
-</header>
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<h1><span>🌱</span>AgroGlif</h1>
+<p>Gestão completa da sua plantação com tecnologia e inteligência</p>
+<div class="btn-group">
+<button onclick="scrollToUserLogin()">Login de Usuário</button>
+<button onclick="alert('Simulação de criar conta')">Criar Conta</button>
+</div>
+</div>
+</section>
 
+<!-- Funcionalidades -->
 <section class="container">
-
-<!-- LOGIN USUÁRIO -->
+<h2 style="text-align:center; margin-bottom:40px;">O que você pode fazer no AgroGlif</h2>
+<div class="cards">
 <div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Diagnóstico">
+<h3>Diagnóstico Inteligente</h3>
+<p>Envie fotos de suas plantas e receba identificação de doenças, pragas e recomendações de manejo.</p>
+</div>
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Plantio">
+<h3>Gestão de Plantios</h3>
+<p>Adicione suas culturas, acompanhe crescimento, histórico e registre notas importantes.</p>
+</div>
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/414/414974.png" alt="Diário">
+<h3>Diário de Campo</h3>
+<p>Registre irrigação, clima, fertilização e outras atividades do seu plantio de forma prática.</p>
+</div>
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="Conhecimento">
+<h3>Banco de Conhecimento</h3>
+<p>Aprenda sobre doenças, pragas, fertilizantes e boas práticas agrícolas com tutoriais e fotos.</p>
+</div>
+</div>
+</section>
+
+<!-- Login Usuário -->
+<section class="container" id="userLoginSection">
+<div class="user-panel card">
 <h3>Login de Usuário</h3>
 <form id="userLoginForm" onsubmit="loginUser(event)">
 <input type="email" placeholder="Email" required>
@@ -67,8 +126,10 @@ a:hover { text-decoration:underline; }
 <p>Não tem conta? <a href="#" onclick="alert('Simulação de criar conta');">Criar conta</a></p>
 <p id="userMsg"></p>
 </div>
+</section>
 
-<!-- LOGIN ADMIN -->
+<!-- Login Admin -->
+<section class="container">
 <div class="card">
 <h3>Login do Admin</h3>
 <form id="adminForm" onsubmit="loginAdmin(event)">
@@ -87,53 +148,6 @@ a:hover { text-decoration:underline; }
 </div>
 <p id="adminMsg"></p>
 </div>
-
-<!-- PAINEL USUÁRIO -->
-<div class="user-panel" id="userPanel">
-
-<div class="card card-section">
-<h3>Meus Plantios</h3>
-<form onsubmit="addPlantio(event)">
-<select id="tipoCultura">
-<option value="Milho">Milho</option>
-<option value="Soja">Soja</option>
-<option value="Trigo">Trigo</option>
-<option value="Tomate">Tomate</option>
-</select>
-<input type="text" placeholder="Área plantada (ha)" id="areaPlantada">
-<button type="submit">Adicionar Plantio</button>
-</form>
-<table id="listaPlantios">
-<tr><th>Cultura</th><th>Área (ha)</th></tr>
-</table>
-</div>
-
-<div class="card card-section">
-<h3>Analisar Planta</h3>
-<input type="file" id="plantaFoto">
-<button onclick="analisar()">Analisar planta</button>
-<h4 id="resultado"></h4>
-</div>
-
-<div class="card card-section">
-<h3>Banco de Conhecimento</h3>
-<ul>
-<li>Doenças e pragas comuns</li>
-<li>Fertilizantes e manejo</li>
-<li>Tutoriais em vídeo e fotos</li>
-<li>Dicas de cultivo sustentável</li>
-</ul>
-</div>
-
-<div class="card card-section">
-<h3>Diário de Campo</h3>
-<textarea id="diarioCampo" rows="5" placeholder="Registre eventos importantes: irrigação, clima, pragas..."></textarea>
-<button onclick="salvarDiario()">Salvar Diário</button>
-<p id="msgDiario"></p>
-</div>
-
-</div>
-
 </section>
 
 <footer>
@@ -142,17 +156,21 @@ a:hover { text-decoration:underline; }
 </footer>
 
 <script>
+// Scroll para login usuário
+function scrollToUserLogin(){
+document.getElementById("userLoginSection").scrollIntoView({behavior:"smooth"});
+}
+
 // Simulação análise IA
 function analisar(){
-document.getElementById("resultado").innerHTML = "🔍 Possível problema detectado: Mancha foliar. (Simulação)";
+alert("🔍 Possível problema detectado: Mancha foliar. (Simulação)");
 }
 
 // LOGIN USUÁRIO
 function loginUser(e){
 e.preventDefault();
 document.getElementById("userMsg").innerText = "✅ Login de usuário bem-sucedido! (Simulação)";
-document.getElementById("userPanel").style.display = "block";
-e.target.style.display = "none";
+e.target.parentElement.style.display = "none";
 }
 
 // LOGIN ADMIN
@@ -176,36 +194,6 @@ function logoutAdmin(){
 document.getElementById("adminSection").style.display = "none";
 document.getElementById("adminForm").style.display = "block";
 document.getElementById("adminMsg").innerText = "";
-}
-
-// Gestão de plantios
-const plantios = [];
-function addPlantio(e){
-e.preventDefault();
-const cultura = document.getElementById("tipoCultura").value;
-const area = document.getElementById("areaPlantada").value;
-if(!area) return alert("Informe a área plantada");
-plantios.push({cultura, area});
-renderPlantios();
-document.getElementById("areaPlantada").value = "";
-}
-
-function renderPlantios(){
-const lista = document.getElementById("listaPlantios");
-lista.innerHTML = "<tr><th>Cultura</th><th>Área (ha)</th></tr>";
-plantios.forEach((p,i)=>{
-const row = document.createElement("tr");
-row.innerHTML = `<td>${p.cultura}</td><td>${p.area}</td>`;
-lista.appendChild(row);
-});
-}
-
-// Diário de campo
-function salvarDiario(){
-const texto = document.getElementById("diarioCampo").value;
-if(!texto) return alert("Digite algo no diário");
-document.getElementById("msgDiario").innerText = "✅ Diário salvo (simulação)";
-document.getElementById("diarioCampo").value = "";
 }
 </script>
 
